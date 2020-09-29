@@ -4,23 +4,7 @@ module.exports = {
 
     // =================== CADASTRAR USUÁRIO NO BANCO ====================
     async cadastrar(req, res) {
-        if (req.body.Nome == null || req.body.Nome == "")
-            res.status(400).send({
-                salvou: false,
-                erro: "Nome de usuário é informação de preechimento obrigatório",
-            });
-        else if (req.body.Email == null) {
-            res.status(400).send({
-                salvou: false,
-                erro: "E-mail é informação de preenchimento obrigatório"
-            })
-        } else if (req.body.Senha == null)
-            res.status(400).send({
-                salvou: false,
-                erro: "Senha é informação de preenchimento obrigatório",
-            });
-        else
-            await db
+        await db
             .insert(req.body)
             .into("Usuario")
             .then(() => res.status(201).send({ status: "Cadastrado com sucesso" }))

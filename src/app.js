@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const routesMadeControl = require('./MadeControl/router/router.js');
 const routesAberturas = require('./Aberturas/router/router.js');
 const bodyParser = require('body-parser');
 
@@ -12,6 +11,6 @@ app.use(cors())
 
 app.use(bodyParser.json());
 
-app.use(routesAberturas, routesMadeControl);
+app.use(routesAberturas);
 
 app.listen(porta, () => console.log("Servidor conectado!"));
