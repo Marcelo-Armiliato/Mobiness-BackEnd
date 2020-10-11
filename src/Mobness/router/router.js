@@ -13,7 +13,7 @@ app.get('/Favoritos/ListarFavoritosUsuario/:IdUsuario', Favoritos.ListarFavorito
 // API DA PARTE DOS IMÓVEIS
 app.get('/imovel/proximo/', imovel.buscarProxID);
 app.get('/imovel/ListarTodos/', imovel.listarTodosImoveis);
-app.get('/imovel/ListarImoveisUsuario/', imovel.listarImoveisPorUsuario);
+app.get('/imovel/ListarImoveisUsuario/:IdUsuario', imovel.listarImoveisPorUsuario);
 app.delete('/imovel/deletar/:id', imovel.deletar);
 app.put('/imovel/editar/:id', imovel.editar);
 app.post('/imovel/Cadastrar', imovel.VerificarECadastraImovel);
