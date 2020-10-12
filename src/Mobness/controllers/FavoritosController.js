@@ -14,7 +14,7 @@ module.exports = {
     // ====== API PARA LISTAR OS IMOVEIS MARCADOS COMO FAVORITOS ========
     async ListarFavoritosUsuario(req, res) {
         await db
-            .select("Imovel.*", "Favoritos.IdFavoritos")
+            .select("Imovel.*", "Favoritos.IdFavoritos", "Favoritos.Favorito")
             .table("Imovel")
             .join("Favoritos", "Favoritos.IdImovel", "=", "Imovel.IdImovel")
             .join("Usuario", "Usuario.IdUsuario", "=", "Favoritos.IdUsuario")
