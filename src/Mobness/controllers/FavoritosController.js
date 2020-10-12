@@ -15,8 +15,9 @@ module.exports = {
     async ListarFavoritosUsuario(req, res) {
         await db
             .select("")
-            .table("Favoritos")
-            .join("Favoritos", "Usuario.IdUsuario", "=", "Favoritos.IdUsuario")
+            .table("Imovel")
+            .join("Favoritos", "Favoritos.IdImovel", "=", "Imovel.IdImovel")
+            .join("Usuario", "Usuario.IdUsuario", "=", "Favoritos.IdUsuario")
             .where({ "Favoritos.IdUsuario": req.params.IdUsuario })
             .orderBy("IdFavoritos", "desc")
             .then((result) => {
