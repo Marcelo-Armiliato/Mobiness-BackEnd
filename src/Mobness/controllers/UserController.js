@@ -20,7 +20,7 @@ module.exports = {
             .catch(() => res.status(400).send({ status: "ERRO" }));
     },
 
-    // =========== VERIFICA SE O IMÓVEL ESTÁ DISPONÍVEL PARA CADASTRAR USUÁRIO ===========
+    // =========== VERIFICA SE O E-MAIL ESTÁ DISPONÍVEL PARA CADASTRAR USUÁRIO ===========
     async VerificarEmailDisponivel(req, res) {
         if (req.body.Email == null)
             res.status(400).send({ validou: "Erro, o campo email esta vazio" });

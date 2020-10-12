@@ -36,4 +36,18 @@ module.exports = {
     },
 
 
+    // =========== VERIFICA SE O IMÓVEL JÁ FOI MARCADO COMO FAVORITO ===========
+    async VerificaImovelFavorito(req, res) {
+
+        const result = await db("Favoritos")
+            .where({
+                IdImovel: req.params.IdImovel
+            });
+
+        if (result.length != 0) res.status(400).send({ validou: "Imóvel já está marcado como favorito" });
+        else res.status(200).send({ validou: "Imóvel disponível!" });
+
+    },
+
+
 }
