@@ -27,9 +27,9 @@ module.exports = {
     },
 
     // ============== APAGA IMOVEL LISTADO COMO FAVORITO ==============
-    async deletar(req, res) {
+    async Deletar(req, res) {
         await db("Favoritos")
-            .where({ idimovel: req.params.IdFavorito })
+            .where({ IdFavoritos: req.params.IdFavorito })
             .del()
             .then(() => res.status(200).send({ Status: "OK" }))
             .catch(() => res.status(400).send({ status: "ERRO" }));
