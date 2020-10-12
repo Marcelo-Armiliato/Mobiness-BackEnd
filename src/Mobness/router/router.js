@@ -9,7 +9,7 @@ const app = express.Router();
 // API PARA OS BUSCAR OS CODIGOS DE ADM E EMPRESA
 app.post('/Favoritos/Cadastrar/', Favoritos.Cadastrar);
 app.get('/Favoritos/ListarFavoritosUsuario/:IdUsuario', Favoritos.ListarFavoritosUsuario);
-app.delete('/Favoritos/Deletar/:IdFavorito', Favoritos.Deletar);
+app.delete('/Favoritos/Deletar/:IdImovel', Favoritos.Deletar);
 app.get('/Favoritos/VerificaFavoritoMarcado/:IdImovel', Favoritos.VerificaImovelFavorito);
 
 // API DA PARTE DOS IMÓVEIS

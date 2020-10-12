@@ -29,7 +29,8 @@ module.exports = {
     // ============== APAGA IMOVEL LISTADO COMO FAVORITO ==============
     async Deletar(req, res) {
         await db("Favoritos")
-            .where({ IdFavoritos: req.params.IdFavorito })
+            .where({ IdFavoritos: req.params.IdImovel })
+            .andWhere({ IdUsuario: req.body.IdUsuario })
             .del()
             .then(() => res.status(200).send({ Status: "OK" }))
             .catch(() => res.status(400).send({ status: "ERRO" }));
@@ -42,7 +43,8 @@ module.exports = {
         const result = await db("Favoritos")
             .where({
                 IdImovel: req.params.IdImovel
-            });
+            })
+            .andWhere({ IdUsuario: req.body.IdUsuario })
 
         if (result.length != 0) res.status(400).send({ validou: "Imóvel já está marcado como favorito" });
         else res.status(200).send({ validou: "Imóvel disponível!" });
