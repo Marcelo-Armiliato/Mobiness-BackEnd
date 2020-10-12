@@ -29,8 +29,8 @@ module.exports = {
     // ============== APAGA IMOVEL LISTADO COMO FAVORITO ==============
     async Deletar(req, res) {
         await db("Favoritos")
-            .where({ IdFavoritos: req.params.IdImovel })
-            .andWhere({ IdUsuario: req.body.IdUsuario })
+            .where({ IdUsuario: req.params.IdUsuario })
+            .andWhere({ IdImovel: req.params.IdImovel })
             .del()
             .then(() => res.status(200).send({ Status: "OK" }))
             .catch(() => res.status(400).send({ status: "ERRO" }));
