@@ -36,7 +36,6 @@ module.exports = {
             .catch(() => res.status(400).send({ status: "ERRO" }));
     },
 
-
     // =========== VERIFICA SE O IMÓVEL JÁ FOI MARCADO COMO FAVORITO ===========
     async VerificaImovelFavorito(req, res) {
 
