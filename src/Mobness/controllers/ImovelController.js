@@ -48,7 +48,7 @@ module.exports = {
         await db
             .select()
             .table("Imovel")
-            .where({ "Imovel.Status_Imovel": "Ativo" })
+            .where({ "Imovel.Status_Imovel": "Ativado" })
             .orderBy("idImovel", "desc")
             .then((result) => {
                 res.status(200).send(result);
