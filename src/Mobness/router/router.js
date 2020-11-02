@@ -19,7 +19,11 @@ app.get('/imovel/ListarImoveisUsuario/:IdUsuario', imovel.listarImoveisPorUsuari
 app.delete('/imovel/deletar/:id', imovel.deletar);
 app.put('/imovel/editar/:id', imovel.editar);
 app.post('/imovel/Cadastrar', imovel.VerificarECadastraImovel);
-app.get('/imovel/BuscarUnicoRegistro/:Tipo', imovel.BuscarPorTipoImovel);
+app.get('/imovel/BuscarImovelPorTipo/:Tipo', imovel.BuscarPorTipoImovel);
+app.get('/imovel/ListaTodosImovelCasa/', imovel.listarImovelCasa);
+app.get('/imovel/ListaTodosImovelTerreno/', imovel.listarImovelTerreno);
+app.get('/imovel/ListaTodosImovelApartamento/', imovel.listarImovelApartamento);
+app.get('/imovel/BuscarImovePorId/:IdImovel', imovel.BuscaImovelPorId);
 
 // LOGIN E CADASTRO DO USUÁRIO DO APP
 app.post('/usuario/cadastrar/', usuario.cadastrar);

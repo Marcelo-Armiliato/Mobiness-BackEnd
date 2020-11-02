@@ -48,6 +48,7 @@ module.exports = {
         await db
             .select()
             .table("Imovel")
+            .where({ "Imovel.Status_Imovel": "Ativo" })
             .orderBy("idImovel", "desc")
             .then((result) => {
                 res.status(200).send(result);
@@ -68,6 +69,54 @@ module.exports = {
             .catch((erro) => res.status(400).send({ Status: "Erro" }));
     },
 
+    // ============== LISTAGEM DOS REGISTROS GRAVADOS NO BANCO DE DADOS ==============
+    async listarImovelCasa(req, res) {
+        await db
+            .select()
+            .table("Imovel")
+            .where({ "Imovel.Tipo_Imovel": "Casa" })
+            .orderBy("IdImovel", "desc")
+            .then((result) => {
+                res.status(200).send(result);
+            })
+            .catch((erro) => res.status(400).send({ Status: "Erro" }));
+    },
+
+    // ============== LISTAGEM DOS REGISTROS GRAVADOS NO BANCO DE DADOS ==============
+    async listarImovelTerreno(req, res) {
+        await db
+            .select()
+            .table("Imovel")
+            .where({ "Imovel.Tipo_Imovel": "Terreno" })
+            .orderBy("IdImovel", "desc")
+            .then((result) => {
+                res.status(200).send(result);
+            })
+            .catch((erro) => res.status(400).send({ Status: "Erro" }));
+    },
+
+    // ============== LISTAGEM DOS REGISTROS GRAVADOS NO BANCO DE DADOS ==============
+    async listarImovelApartamento(req, res) {
+        await db
+            .select()
+            .table("Imovel")
+            .where({ "Imovel.Tipo_Imovel": " Apartamento" })
+            .orderBy("IdImovel", "desc")
+            .then((result) => {
+                res.status(200).send(result);
+            })
+            .catch((erro) => res.status(400).send({ Status: "Erro" }));
+    },
+
+    // ==== API PARA BUSCAR OS DADOS DE UM CERTO IMÓVEL =====
+    async BuscaImovelPorId(req, res) {
+        await db
+            .select()
+            .table("Imovel")
+            .where({ IdImovel: req.params.IdImovel })
+            .then((result) => res.status(200).send(result))
+            .catch(() => res.status(400).send({ status: "ERRO do buscar o determinado imóvel" }));
+    },
 
     // =============== EDIÇÃO DO REGISTRO GRAVADO NO BANCO DE DADOS ================
     async buscarProxID(req, res) {
