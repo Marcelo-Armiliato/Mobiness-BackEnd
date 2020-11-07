@@ -39,6 +39,7 @@ module.exports = {
     async BuscarPorTipoImovel(req, res) {
         await db("Imovel")
             .where({ Tipo_Imovel: req.params.Tipo })
+            .andWhere({ "Imovel.Status_Imovel": "Ativado" })
             .then((result) => res.status(200).send(result))
             .catch((erro) => res.status(400).send({ Status: "Erro" }));
     },
