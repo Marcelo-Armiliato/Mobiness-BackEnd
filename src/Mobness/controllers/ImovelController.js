@@ -112,8 +112,12 @@ module.exports = {
     // ==== API PARA BUSCAR OS DADOS DE UM CERTO IMÓVEL =====
     async BuscaImovelPorId(req, res) {
         await db
-            .select()
+            .select("Imovel.*",
+                db.raw("case when (Imovel.IdEstado = Estado.IdEstado) then Estado.Nome  end as Nome_Estado"),
+                db.raw("case when (Imovel.IdUsuario = Usuario.IdUsuario) then Usuario.Link  end as Link_Usuario"))
             .table("Imovel")
+            .leftJoin("Estado", "Estado.IdEstado", "=", "Imovel.IdEstado")
+            .leftJoin("Usuario", "Usuario.IdUsuario", "=", "Imovel.IdUsuario")
             .where({ IdImovel: req.params.IdImovel })
             .then((result) => res.status(200).send(result))
             .catch(() => res.status(400).send({ status: "ERRO do buscar o determinado imóvel" }));
