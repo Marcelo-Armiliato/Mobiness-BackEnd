@@ -112,7 +112,8 @@ module.exports = {
     // ==== API PARA BUSCAR OS DADOS DE UM CERTO IMÓVEL =====
     async BuscaImovelPorId(req, res) {
         await db
-            .select("Imovel.*", "Usuario.Email", "Usuario.Contato",
+            .select("Imovel.*", "Usuario.Email as Email_Usuario",
+                "Usuario.Contato as Contato_Usuario", "Usuario.Nome as Nome_Usuario",
                 db.raw("case when (Imovel.IdEstado = Estado.IdEstado) then Estado.Nome  end as Nome_Estado"),
                 db.raw("case when (Imovel.IdUsuario = Usuario.IdUsuario) then Usuario.Link  end as Link_Usuario"))
             .table("Imovel")
