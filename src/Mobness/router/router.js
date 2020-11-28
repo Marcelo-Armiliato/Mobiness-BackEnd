@@ -10,7 +10,7 @@ const app = express.Router();
 app.post('/Favoritos/Cadastrar/', Favoritos.Cadastrar);
 app.get('/Favoritos/ListarFavoritosUsuario/:IdUsuario', Favoritos.ListarFavoritosUsuario);
 app.delete('/Favoritos/Deletar/:IdUsuario/:IdImovel', Favoritos.Deletar);
-app.get('/Favoritos/VerificaFavoritoMarcado/:IdImovel', Favoritos.VerificaImovelFavorito);
+app.get('/Favoritos/VerificaFavoritoMarcado/:IdImovel/:IdUsuario', Favoritos.VerificaImovelFavorito);
 
 // API DA PARTE DOS IMÓVEIS
 app.get('/imovel/proximo/', imovel.buscarProxID);

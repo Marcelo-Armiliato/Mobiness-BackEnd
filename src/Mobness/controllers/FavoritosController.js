@@ -13,9 +13,9 @@ module.exports = {
     // ====== API PARA LISTAR OS IMOVEIS MARCADOS COMO FAVORITOS ========
     async ListarFavoritosUsuario(req, res) {
         await db
-            .select('Imovel.*', 'Favoritos.IdFavoritos', 'Favoritos.Favorito')
-            .table('Imovel')
-            .join('Favoritos', 'Favoritos.IdImovel', '=', 'Imovel.IdImovel')
+            .select()
+            .table('Favoritos')
+            // .join('Favoritos', 'Favoritos.IdImovel', '=', 'Imovel.IdImovel')
             .join('Usuario', 'Usuario.IdUsuario', '=', 'Favoritos.IdUsuario')
             .where({ 'Favoritos.IdUsuario': req.params.IdUsuario })
             .orderBy('IdFavoritos', 'desc')
@@ -24,6 +24,21 @@ module.exports = {
             })
             .catch((erro) => res.status(400).send({ Status: 'Erro' }))
     },
+    //   // ====== API PARA LISTAR OS IMOVEIS MARCADOS COMO FAVORITOS ========
+    //   async ListarFavoritosUsuario(req, res) {
+    //     await db
+    //         .select('Imovel.*', 'Favoritos.IdFavoritos', 'Favoritos.Favorito')
+    //         .table('Imovel')
+    //         .join('Favoritos', 'Favoritos.IdImovel', '=', 'Imovel.IdImovel')
+    //         .join('Usuario', 'Usuario.IdUsuario', '=', 'Favoritos.IdUsuario')
+    //         .where({ 'Favoritos.IdUsuario': req.params.IdUsuario })
+    //         .orderBy('IdFavoritos', 'desc')
+    //         .then((result) => {
+    //             res.status(200).send(result)
+    //         })
+    //         .catch((erro) => res.status(400).send({ Status: 'Erro' }))
+    // },
+
 
     // ============== APAGA IMOVEL LISTADO COMO FAVORITO ==============
     async Deletar(req, res) {
@@ -41,7 +56,7 @@ module.exports = {
             .where({
                 IdImovel: req.params.IdImovel,
             })
-            .andWhere({ IdUsuario: req.body.IdUsuario })
+            .andWhere({ IdUsuario: req.params.IdUsuario })
 
         // if (result.length != 0)
         //     res.status(400).send({ validou: 'Imóvel já está marcado como favorito' })
