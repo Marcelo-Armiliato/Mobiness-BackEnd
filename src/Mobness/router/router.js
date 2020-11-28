@@ -38,6 +38,7 @@ app.put('/usuario/Editar/:IdUsuario', usuario.Editar);
 app.get('/usuario/VerificaCodAdm/:IdUsuario', usuario.VerificaCodAdmUsuario);
 app.get('/usuario/BuscarDadosUsuarioLogado/:IdUsuario', usuario.BuscaUsuarioLogado);
 app.get('/usuario/BuscaUsuarioPorId/:IdUsuario', usuario.BuscaUsuarioPorId);
+app.get('/Usuario/BuscaUltimoUsuarioCadastrado/', usuario.BuscaUltimoUsuarioCadastrado);
 
 // API PARA A TABELA "ESTADO"
 app.get('/Estado/ListarTodos', Estado.listarTodosEstados);

@@ -133,5 +133,14 @@ module.exports = {
             .catch(() => res.status(400).send({ status: "ERRO" }));
     },
 
+    // =========== CAPTURA O ULTIMO USUÁRIO CADASTRADO ============
+    async BuscaUltimoUsuarioCadastrado(req, res) {
+        await db
+            .select()
+            .table("Usuario")
+            .max("IdUsuario")
+            .then((result) => res.status(200).send(result))
+            .catch(() => res.status(400).send({ status: "ERRO ao buscar o usuário logado" }));
+    },
 
 };
