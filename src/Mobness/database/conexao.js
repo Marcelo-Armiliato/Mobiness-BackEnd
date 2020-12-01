@@ -16,9 +16,9 @@ const knex = require("knex")({
     connection: {
         host: "mysql669.umbler.com",
         port: 41890,
-        user: "mobness_st",
-        password: "mobness_tcc",
-        database: "mobness",
+        user: "usermobness",
+        password: "tccmobness",
+        database: "pmobness",
     },
 });
 
