@@ -13,4 +13,4 @@ app.use(bodyParser.json());
 
 app.use(routesMobness);
 
-app.listen(porta, () => console.log("Servidor conectado!"));
+app.listen(porta, () => console.log("Servidor conectado! " + porta));

@@ -14,7 +14,7 @@ const knex = require("knex")({
     client: "mysql2",
     version: "8.0",
     connection: {
-        host: "mysql669.umbler.com",
+        host: "mysql741.umbler.com",
         port: 41890,
         user: "usermobness",
         password: "tccmobness",
