@@ -1,4 +1,12 @@
 const db = require("../database/conexao.js");
+const Jwt = require("jsonwebtoken");
+const authConfig = require('../auth/config.json')
+
+function generateToken(params = {}) {
+    return Jwt.sign(params, authConfig.secret, {
+        expiresIn: 18200,
+    })
+};
 
 module.exports = {
 
@@ -36,19 +44,22 @@ module.exports = {
 
     // ====================== LOGIN NO APLICATIVO =======================
     async Login(req, res) {
-
-        if (req.body.Email == null || req.body.Senha == null)
+        const { Email, Senha } = req.body;
+        if (Email == null || Senha == null)
             res
             .status(400)
             .send({ validou: "Erro, o campo email ou senha estão nulo" });
         else {
-            const result = await db("Usuario").where({
-                Email: req.body.Email,
-                Senha: req.body.Senha,
-            });
+            const result = await db
+                .select()
+                .table("Usuario")
+                .where({
+                    Email: Email,
+                    Senha: Senha,
+                });
 
             if (result.length == 0) res.status(400).send({ validou: false });
-            else res.status(200).send({ validou: "Usuario Logado com sucesso" });
+            else res.status(200).send({ validou: "Usuario Logado com sucesso", token: generateToken({ IdUsuario: result.IdUsuario }), result });
         }
 
     },
